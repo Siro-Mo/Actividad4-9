@@ -1,4 +1,9 @@
-import { Page, Locator } from '@playwright/test';
+import { test, expect } from './fixtures';
+
+test('login exitoso', async ({ loginPage }) => {
+  await loginPage.iniciarSesion('student', 'Password123');
+  await expect(loginPage.page).toHaveURL(/dashboard/);
+});
 
 export class LoginPage {
   readonly page: Page;
